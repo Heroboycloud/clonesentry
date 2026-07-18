@@ -1,0 +1,14 @@
+{
+  "name": "elitepay-bot",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express":"^5.2.0",
+    "node-telegram-bot-api": "^0.67.0",
+    "@upstash/redis": "^1.38.0",
+    "dotenv": "^17.2.3"
+  }
+}
