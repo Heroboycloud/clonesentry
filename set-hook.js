@@ -10,7 +10,7 @@ if (!token) {
 const bot = new TelegramBot(token);
 
 // Replace with your Render URL after deployment
-const WEBHOOK_URL = '/webhook';
+const WEBHOOK_URL = 'https://clonesentry.onrender.com/webhook';
 
 async function setupWebhook() {
     try {
