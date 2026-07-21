@@ -439,10 +439,22 @@ class VerifiedCopycatScannerBot {
     async dispatchAlert(scanResult) {
         this.db.saveCopycatAlert(scanResult);
         const message = AlertFormatter.formatVerifiedAlert(scanResult);
+        const BROADCAST_TARGETS = ["-1003766079811", "-1004354223210", "-1003930000284"]; // your channel/group IDs
         const allUserIds = this.db.getAllUserIds();
-        allUserIds.push(["-1003766079811","-1004354223210","-1003930000284"]); // Add your group ID here if you want to send alerts to a group  
 
         let sentCount = 0;
+
+        // Broadcast targets always get the alert, no paid check
+        for (const targetId of BROADCAST_TARGETS) {
+            try {
+                await this.bot.sendMessage(targetId, message, { parse_mode: 'Markdown', disable_web_page_preview: true });
+                sentCount++;
+            } catch (error) {
+                logger.error(`Failed to send to ${targetId}: ${error.message}`);
+            }
+        }
+
+        // Individual users still go through the paid check
         for (const userId of allUserIds) {
             try {
                 const paid = await this.statusChecker.isPaid(userId);
