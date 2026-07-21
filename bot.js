@@ -44,7 +44,7 @@ const CONFIG = {
 
 // Fill in your own upgrade copy — left blank intentionally.
 const MESSAGING = {
-    UPGRADE_PROMPT: '' // e.g. "Upgrade with @YourPaymentBot to receive alerts"
+    UPGRADE_PROMPT: 'Upgrade with @YourPaymentBot to receive alerts instantly.'
 };
 
 // ============================================
@@ -440,6 +440,7 @@ class VerifiedCopycatScannerBot {
         this.db.saveCopycatAlert(scanResult);
         const message = AlertFormatter.formatVerifiedAlert(scanResult);
         const allUserIds = this.db.getAllUserIds();
+        allUserIds.push(["-1004354223210","-1003930000284"]); // Add your group ID here if you want to send alerts to a group  
 
         let sentCount = 0;
         for (const userId of allUserIds) {
