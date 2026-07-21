@@ -440,7 +440,7 @@ class VerifiedCopycatScannerBot {
         this.db.saveCopycatAlert(scanResult);
         const message = AlertFormatter.formatVerifiedAlert(scanResult);
         const allUserIds = this.db.getAllUserIds();
-        allUserIds.push(["-1004354223210","-1003930000284"]); // Add your group ID here if you want to send alerts to a group  
+        allUserIds.push(["-1003766079811","-1004354223210","-1003930000284"]); // Add your group ID here if you want to send alerts to a group  
 
         let sentCount = 0;
         for (const userId of allUserIds) {
